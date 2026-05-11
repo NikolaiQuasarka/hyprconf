@@ -357,7 +357,7 @@ hl.bind("CTRL" .. "+ F12", hl.dsp.exec_cmd("flameshot gui"))
 hl.bind(mainMod .. "+ ESCAPE", hl.dsp.exec_cmd(terminal .. " " .. systemMonitor))
 
 -- open hyprland config
-hl.bind(mainMod .. "+N", hl.dsp.exec_cmd(editor .. ' ~/.config/hypr/hyprland.conf'))
+hl.bind(mainMod .. "+N", hl.dsp.exec_cmd(editor .. ' ~/.config/hypr/'))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
