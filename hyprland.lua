@@ -34,7 +34,7 @@ local menu = "fuzzel"
 local systemMonitor = "btop"
 local widgetSystem = "qs -c noctalia-shell" -- no-duplicate
 local ipc = "qs -c noctalia-shell ipc call"
-local editor = terminal .. " nvim"
+local editor = "zeditor"
 local notifySystem = "swaync"
 
 -------------------
