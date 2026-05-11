@@ -279,6 +279,7 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:mag
 
 -- Move to available workspace
 hl.bind(mainMod .. "+A", hl.dsp.focus { workspace = "empty" })
+hl.bind(mainMod .. "+SHIFT+A", hl.dsp.window.move { workspace = "empty" })
 
 -- Fulscreen
 hl.bind(mainMod .. "+F", hl.dsp.window.fullscreen())
