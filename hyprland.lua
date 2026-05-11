@@ -244,12 +244,35 @@ hl.bind(
     hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + V", hl.dsp.window.float())
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", function ()
+    local active_window = hl.get_active_window()
+
+    if not active_window then
+        return
+    end
+
     local actions = {
-        hl.dsp.window.float { action = "toggle" }, hl.dsp.window.pin(), hl.dsp.window.move { direction = "r" }
+        hl.dsp.window.resize { x = 1920 * 0.3, y = 1200 * 0.3 }, hl.dsp.window.pin(),
+        hl.dsp.window.move { direction = "u" }, hl.dsp.window.move { direction = "r" }
     }
+
+    local is_floating = active_window.floating
+    local is_pinned = active_window.pinned
+
+    if is_floating then
+        if not is_pinned then
+            for _, action in pairs(actions) do
+                hl.dispatch(action)
+            end
+        else
+            hl.dispatch(hl.dsp.window.float { action = "off" })
+        end
+        return
+    end
+
+    table.insert(actions, 1, hl.dsp.window.float {})
 
     for _, action in pairs(actions) do
         hl.dispatch(action)
