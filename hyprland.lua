@@ -255,9 +255,13 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", function ()
-    hl.dsp.window.float { action = "toggle" }
-    hl.dsp.window.pin()
-    hl.dsp.window.move { direction = "r" }
+    local actions = {
+        hl.dsp.window.float { action = "toggle" }, hl.dsp.window.pin(), hl.dsp.window.move { direction = "r" }
+    }
+
+    for _, action in pairs(actions) do
+        hl.dispatch(action)
+    end
 end)
 hl.bind(mainMod .. " + U", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. "+B", hl.dsp.exec_cmd(ipc .. " launcher clipboard"))
@@ -327,16 +331,18 @@ hl.bind(mainMod .. "+ SHIFT" .. "+" .. up, hl.dsp.window.move({ direction = "u" 
 hl.bind(mainMod .. "+ SHIFT" .. "+" .. right, hl.dsp.window.move({ direction = "r" }))
 
 -- Resize
-hl.bind(
-    mainMod .. "+ CTRL" .. " + " .. left, hl.dsp.window.resize { x = -70, y = 0, relative = true, window = "active" }
-)
-hl.bind(
-    mainMod .. "+ CTRL" .. " + " .. down, hl.dsp.window.resize { x = 0, y = 50, relative = true, window = "active" }
-)
-hl.bind(mainMod .. "+ CTRL" .. " + " .. up, hl.dsp.window.resize { x = 0, y = -50, relative = true, window = "active" })
-hl.bind(
-    mainMod .. "+ CTRL" .. " + " .. right, hl.dsp.window.resize { x = 70, y = 0, relative = true, window = "active" }
-)
+hl.bind(mainMod .. "+ CTRL" .. " + " .. left, hl.dsp.window.resize { x = -70, y = 0, relative = true }, {
+    repeating = true
+})
+hl.bind(mainMod .. "+ CTRL" .. " + " .. down, hl.dsp.window.resize { x = 0, y = 50, relative = true }, {
+    repeating = true
+})
+hl.bind(mainMod .. "+ CTRL" .. " + " .. up, hl.dsp.window.resize { x = 0, y = -50, relative = true }, {
+    repeating = true
+})
+hl.bind(mainMod .. "+ CTRL" .. " + " .. right, hl.dsp.window.resize { x = 70, y = 0, relative = true }, {
+    repeating = true
+})
 
 -- player
 hl.bind("ALT" .. "+ R", hl.dsp.exec_cmd("playerctl play-pouse"))
