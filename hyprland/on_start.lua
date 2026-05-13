@@ -1,11 +1,11 @@
 -- require "variables"
 
-hl.on("hyprland.start", function ()
-    hl.exec_cmd(WIDGET_SYSTEM)
-    hl.exec_cmd("hyprpaper")
-    hl.exec_cmd("systemctl --user start hyprpolkitagent")
-    hl.exec_cmd("kbuildsycoca6")
-    hl.exec_cmd("hypridle")
-    hl.exec_cmd("hyprsunset")
-    hl.exec_cmd("systemctl start --user app-Flameshot@autostart.service")
+hl.on('hyprland.start', function()
+	hl.exec_cmd(WIDGET_SYSTEM)
+	hl.exec_cmd 'hyprpaper'
+	hl.exec_cmd 'systemctl --user start hyprpolkitagent'
+	hl.exec_cmd 'kbuildsycoca6'
+	hl.exec_cmd 'hypridle'
+	hl.exec_cmd 'hyprsunset'
+	hl.exec_cmd 'systemctl start --user app-Flameshot@autostart.service'
 end)
