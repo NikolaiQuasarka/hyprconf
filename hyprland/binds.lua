@@ -161,7 +161,7 @@ hl.bind(
 )
 
 -- player
-hl.bind('ALT' .. '+ R', hl.dsp.exec_cmd 'playerctl play-pouse')
+hl.bind('ALT' .. '+ R', hl.dsp.exec_cmd(IPC .. ' media playPause'))
 
 -- screenshots
 local user = os.getenv 'USER'
